@@ -1,5 +1,4 @@
 package edu.sharif.selab;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,9 +6,10 @@ public class AccountBalanceCalculator {
 
     private static List<Transaction> transactionHistory = new ArrayList<>();
 
-    // Method to calculate balance based on transactions
+    // Method to calculate balance based on a given list of transactions AND update history
     public static int calculateBalance(List<Transaction> transactions) {
         int balance = 0;
+        transactionHistory.clear(); // Clear the history before processing new transactions
         for (Transaction t : transactions) {
             if (t.getType() == TransactionType.DEPOSIT) {
                 balance += t.getAmount();
@@ -19,23 +19,25 @@ public class AccountBalanceCalculator {
                 }
                 balance -= t.getAmount();
             }
-
+            transactionHistory.add(t);
         }
         return balance;
     }
 
-    // Method to get the transaction history
+    // Method to get the current transaction history (static)
     public static List<Transaction> getTransactionHistory() {
-        return new ArrayList<>(transactionHistory); // Return a copy to prevent external modification
+        return new ArrayList<>(transactionHistory);
     }
 
-    // Method to add a transaction to the history
+    // Method to add a transaction to the history (static)
     public static void addTransaction(Transaction transaction) {
         transactionHistory.add(transaction);
     }
 
-    // Method to clear the transaction history
+    // Method to clear the transaction history (static)
     public static void clearTransactionHistory() {
         transactionHistory.clear();
     }
+
+    // (Removed calculateBalanceAndUpdateHistory to align with the test's calls)
 }
