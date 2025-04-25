@@ -21,6 +21,29 @@
 
 ## بخش دوم
 
+در این بخش، بایستی که ابتدا سه تست نهایی و کامنت شده در کلاس AccountBalanceCalculatorTest را از حالت کامنت خارج کنیم. در این حالت مطابق تصاویر زیر مشاهده می‌کنیم که تمامی تست‌های مذکور، فیل می‌شوند. هدف از این بخش شبیه‌سازی بخش اولیه فرایند TDD می‌باشد. پس می‌توان گفت این سه تست عملا نماینده سه فیچر می‌باشند و در گام اول پروسه TDD هستیم. لازم به ذکر است که فیجر مربوط به دو تست اول در راستای سایقه‌ی تراکنش و فیچر تست سوم نیز در راستای نگهداری تنها آخرین تراکنش می‌باشد.
+
+![added_test.png](static/testTransactionHistoryAfterDepositsAndWithdrawals_Fail.png)
+![added_test.png](static/testTransactionHistoryAfterDeposits_Fail.png)
+![added_test.png](static/testTransactionHistoryShouldContainOnlyLastCalculationTransactions_Fail.png)
+
+حال وارد گام دوم پروسه TDD می‌شویم. در این بخش لازم است کد را به گونه‌ای بازنویسی کنیم که تست‌های فیل شده در گام اول پاس شوند. 
+
+تست‌های مربوط به سابقه تراکنش‌ها (testTransactionHistoryAfterDeposits و testTransactionHistoryAfterDepositsAndWithdrawals): متد calculateBalance حالا تمام تراکنش‌های پردازش‌شده را به transactionHistory اضافه می‌کند. در نتیجه، بعد از محاسبه موجودی با این تراکنش‌ها، سابقه تراکنش‌ها شامل تمام آن‌ها خواهد بود و تست‌ها پاس می‌شوند.
+
+تست مربوط به نگهداری فقط آخرین تراکنش‌ها (testTransactionHistoryShouldContainOnlyLastCalculationTransactions): مهم‌ترین تغییر این است که متد calculateBalance در ابتدای خود، transactionHistory را پاک می‌کند. به همین دلیل:
+
+- در اولین فراخوانی calculateBalance با تراکنش‌های اول، سابقه پاک شده و سپس با آن تراکنش‌ها پر می‌شود. تست‌های مربوط به محتوای سابقه در این مرحله پاس می‌شوند.
+در دومین فراخوانی-  calculateBalance با تراکنش‌های دوم، سابقه دوباره پاک شده و با تراکنش‌های دوم پر می‌شود. به این ترتیب، سابقه فقط شامل تراکنش‌های آخرین محاسبه است و تست‌های مربوط به آن پاس می‌شوند.
+
+یا به نوعی می‌توان گفت، با تغییر calculateBalance به طوری که که هم موجودی را محاسبه کند و هم سابقه تراکنش‌ها را (با پاک کردن قبلی و افزودن تراکنش‌های جدید) مدیریت کند، رفتار کلاس AccountBalanceCalculator با نیازمندی‌های تمام تست‌ها هماهنگ شده و این مورد به اجرای موفقیت‌آمیز تست‌ها منجر می‌شود.
+
+ریفکتور و اجرای موفقیت‌آمیز تست‌ها گام نهایی این پروسه می‌باشد. که مطابق تصاویر زیر نهایی شدن پروسه TDD و پاس شدن تست‌ها را مشاهده می‌کنیم:
+
+![added_test.png](static/testTransactionHistoryAfterDepositsAndWithdrawals_Pass.png)
+![added_test.png](static/testTransactionHistoryAfterDeposits_Pass.png)
+![added_test.png](static/testTransactionHistoryShouldContainOnlyLastCalculationTransactions_Pass.png)
+
 
 ## پاسخ به پرسش‌ها
 
