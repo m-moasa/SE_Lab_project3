@@ -23,8 +23,11 @@
 
 در این بخش، بایستی که ابتدا سه تست نهایی و کامنت شده در کلاس AccountBalanceCalculatorTest را از حالت کامنت خارج کنیم. در این حالت مطابق تصاویر زیر مشاهده می‌کنیم که تمامی تست‌های مذکور، فیل می‌شوند. هدف از این بخش شبیه‌سازی بخش اولیه فرایند TDD می‌باشد. پس می‌توان گفت این سه تست عملا نماینده سه فیچر می‌باشند و در گام اول پروسه TDD هستیم. لازم به ذکر است که فیجر مربوط به دو تست اول در راستای سایقه‌ی تراکنش و فیچر تست سوم نیز در راستای نگهداری تنها آخرین تراکنش می‌باشد.
 
+فیل شدن تست testTransactionHistoryAfterDepositsAndWithdrawals
 ![added_test.png](static/testTransactionHistoryAfterDepositsAndWithdrawals_Fail.png)
+فیل شدن تست testTransactionHistoryAfterDeposits
 ![added_test.png](static/testTransactionHistoryAfterDeposits_Fail.png)
+فیل شدن تست testTransactionHistoryShouldContainOnlyLastCalculationTransactions
 ![added_test.png](static/testTransactionHistoryShouldContainOnlyLastCalculationTransactions_Fail.png)
 
 حال وارد گام دوم پروسه TDD می‌شویم. در این بخش لازم است کد را به گونه‌ای بازنویسی کنیم که تست‌های فیل شده در گام اول پاس شوند. 
@@ -40,8 +43,14 @@
 
 ریفکتور و اجرای موفقیت‌آمیز تست‌ها گام نهایی این پروسه می‌باشد. که مطابق تصاویر زیر نهایی شدن پروسه TDD و پاس شدن تست‌ها را مشاهده می‌کنیم:
 
+پاس شدن تست testTransactionHistoryAfterDepositsAndWithdrawals
+
 ![added_test.png](static/testTransactionHistoryAfterDepositsAndWithdrawals_Pass.png)
+پاس شدن تست testTransactionHistoryAfterDeposits
+
 ![added_test.png](static/testTransactionHistoryAfterDeposits_Pass.png)
+پاس شدن تست testTransactionHistoryShouldContainOnlyLastCalculationTransactions
+
 ![added_test.png](static/testTransactionHistoryShouldContainOnlyLastCalculationTransactions_Pass.png)
 
 
