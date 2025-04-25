@@ -14,6 +14,9 @@ public class AccountBalanceCalculator {
             if (t.getType() == TransactionType.DEPOSIT) {
                 balance += t.getAmount();
             } else if (t.getType() == TransactionType.WITHDRAWAL) {
+                if (t.getAmount() > balance) {
+                    throw new IllegalArgumentException("Insufficient funds for withdrawal of " + t.getAmount());
+                }
                 balance -= t.getAmount();
             }
 
